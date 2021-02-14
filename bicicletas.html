@@ -286,7 +286,7 @@
                 let $gallery = document.querySelector('#gallery');
                 let $modals = document.querySelector('#products-modals');
                 let $botonVaciar = document.querySelector('#boton-vaciar');
-                let $cantProductos = document.querySelector('#cantidad-productos');
+                let $cantProductos = document.querySelector(".cantidad-productos");
 
                 let $shipping = document.querySelector('#shipping');
                 let $weacept = document.querySelector('#weacept');
@@ -326,7 +326,7 @@
                     renderizarCarrito();
                     
                     // Calculamos de nuevo el precio
-                    //calcularTotal();
+                    calcularTotal();
                     console.log(carrito);
                 }
                                                                               
@@ -337,12 +337,13 @@
                 function cantidadProductos() {
                     cantProductos = carrito.length;
                     if(cantProductos == 0) {
-                        $cantProductos.classList.add('text-muted' );
+                        $cantProductos.classList.add('text-muted');
                     } else {
                         $cantProductos.classList.remove('text-muted');
                     }
                     $cantProductos.textContent = `${cantProductos}`;
                     console.log(cantProductos);
+                    
                 };
 
                 function calcularTotal() {
@@ -357,12 +358,12 @@
                         });
                         total = total + miItem[0]['price'];
                     }
-                    // Formateamos el total para que solo tenga dos decimales
-                    let totalDosDecimales = total.toFixed(2);
+                    // Le damos formato el precio
+                    let totalDosDecimales = Intl.NumberFormat(032).format(total);
                     
                     console.log(totalDosDecimales);
                     // Renderizamos el precio en el HTML
-                    //$total.textContent(`Total: $ ${totalDosDecimales}`);
+                    $total.textContent = `$ ${totalDosDecimales}`;
                 }
     
                 function vaciarCarrito() {
@@ -390,9 +391,7 @@
                 };
 
                 
-                
-                
-                // FUNCIONES RENDERIZADO
+                /* Renderizado */
 
                 // Renderizamos galería de productos
                 function renderizarProductos() {
@@ -700,7 +699,7 @@
                     
                     } else {
                         $carrito.innerHTML = `
-                        <p> No hay elementos en el carrito </p>
+                        <p> No hay productos en el carrito </p>
                         `;
                         
                         ocultDivs();
@@ -741,7 +740,7 @@
                             <li>
                                 <a href="" class="nav-item nav-link" data-toggle="modal" data-target="#cartModal">
                                     <i class="fas fa-shopping-cart"></i>
-                                    <span id="cantidad-productos" class="p-3 text-warning"></span>
+                                    <span class="p-3 text-warning cantidad-productos"></span>
                                 </a>
                             </li>
                         </ul>
@@ -755,20 +754,20 @@
             <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header border-bottom-0">
-                        <h5 class="modal-title" id="tituloCarrito">Tu Carrito</h5>
+                        <h5 class="modal-title">Tu Carrito</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <!-- Modal Body-->
                     <div class="modal-body">
                         <section>
                             <div class="row">
-                                <div class="col-lg-8">
+                                <div class="col-lg-7">
                                     <div class="card mb-3">
                                         <div class="card-body">
                                             <div id = "carrito">
-                                                <p>No hay elementos en el carrito</p>
+                                                <p>No hay productos en el carrito</p>
                                             </div>
                                             <p id="purchase-delay" class="d-none text-primary mb-0"><i class="fas fa-info-circle mr-1"></i>No demore la compra, agregar artículos a su carrito no significa reservarlos.</p>
                                         </div>
@@ -796,7 +795,7 @@
                                         </div>
                                     </div>
                                 </div>  
-                                <div class="col-lg-4">
+                                <div class="col-lg-5">
                                     <!-- Pago -->
                                     <div id = "payment" class="card mb-3 d-none">
                                         <div class="card-body">
@@ -805,8 +804,8 @@
                                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"> Temporary amount <span>$25.98</span></li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0"> Envio <span>Gratis</span></li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center border-bottom-0 border-right-0 border-left-0 px-0 mb-3">
-                                                    <p><strong>PRECIO TOTAL </strong><small>(IVA incluido)</small></p>
-                                                    <span><strong>$53.98</strong></span>
+                                                    <p class="mb-0"><strong>PRECIO TOTAL </strong><small>(IVA incluido)</small></p>
+                                                    <span><strong id="total"></strong></span>
                                                 </li>
                                             </ul>
                                             <div class="btn-group d-flex" role="group" aria-label="Basic example">
