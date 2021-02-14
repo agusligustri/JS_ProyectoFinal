@@ -280,13 +280,15 @@
                 // Variables y Selectores    
                 let carrito = [];
                 let total = 0;
+                let shipping = 1500;
 
                 let $carrito = document.querySelector('#carrito');
                 let $total = document.querySelector('#total');
                 let $gallery = document.querySelector('#gallery');
                 let $modals = document.querySelector('#products-modals');
                 let $botonVaciar = document.querySelector('#boton-vaciar');
-                let $cantProductos = document.querySelector(".cantidad-productos");
+                let $cantProductos = document.querySelector('.cantidad-productos');
+                let $listadoPrecios = document.querySelector('#listado-precios');
 
                 let $shipping = document.querySelector('#shipping');
                 let $weacept = document.querySelector('#weacept');
@@ -308,6 +310,9 @@
                     carrito.push(this.getAttribute('marcador'))
                     // Calculo el total
                     calcularTotal();
+                    // Calculo del envio
+                    shippingPrice();
+
                     // Renderizamos el carrito 
                     renderizarCarrito();
                     // Imprimimos en consola los ID de los productos del carrito
@@ -315,6 +320,8 @@
                 }
                                                         
                 function borrarItemCarrito() {
+                    
+
                     // Obtenemos el producto ID que hay en el boton pulsado
                     let id = this.getAttribute('marcador');
 
@@ -322,16 +329,20 @@
                     carrito = carrito.filter(function (carritoId) {
                         return carritoId !== id;
                     });
+
                     // volvemos a renderizar
                     renderizarCarrito();
                     
                     // Calculamos de nuevo el precio
-                    calcularTotal();
                     console.log(carrito);
                 }
                                                                               
                 function limpiarCarrito () {
                     $carrito.textContent = '';
+                }
+
+                function limpiarListadoPrecios () {
+                    $listadoPrecios.innerHTML = '';
                 }
     
                 function cantidadProductos() {
@@ -356,15 +367,22 @@
                         let miItem = baseDeDatos.filter(function(itemBaseDatos) {
                             return itemBaseDatos['id'] == item;
                         });
-                        total = total + miItem[0]['price'];
+                        total = total + miItem[0]['price'] + shipping;
                     }
                     // Le damos formato el precio
                     let totalDosDecimales = Intl.NumberFormat(032).format(total);
                     
                     console.log(totalDosDecimales);
+                    
                     // Renderizamos el precio en el HTML
-                    $total.textContent = `$ ${totalDosDecimales}`;
-                }
+                    let totalPrice = document.createElement('li');
+                    totalPrice.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'border-bottom-0', 'border-right-0', 'border-left-0', 'px-0', 'mb-3');
+                    totalPrice.innerHTML = `
+                        <p class="mb-0"><strong>PRECIO TOTAL </strong><small>(IVA incluido)</small></p>
+                        <span><strong>$ ${Intl.NumberFormat(032).format(total)}</strong></span>`;
+            
+                    $listadoPrecios.appendChild(totalPrice);
+                };
     
                 function vaciarCarrito() {
                     if(confirm('¿Está seguro que desea vaciar el carrito?')) {
@@ -390,6 +408,21 @@
                     $discount.classList.add('d-none'); 
                 };
 
+                function shippingPrice() {
+                    // Compras mayores a $7000, envio gratis
+                    if(total > 7000) {
+                        shipping = 0
+                    } else {
+                        shipping
+                    }
+
+                    let cartModalShippingPrice = document.createElement('li');
+                    cartModalShippingPrice.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'border-0', 'px-0', 'pb-0');
+                    cartModalShippingPrice.innerHTML = `1 x Envío a domicilio <span> $ ${Intl.NumberFormat(032).format(shipping)}</span>`;
+                    
+                    $listadoPrecios.appendChild(cartModalShippingPrice);
+
+                }
                 
                 /* Renderizado */
 
@@ -578,19 +611,19 @@
 
                     // Vaciamos todo el html
                     limpiarCarrito();
+                    limpiarListadoPrecios();
 
                     //Cantidad de Productos
                     cantidadProductos();
+
 
                     // Quitamos los duplicados
                     let carritoSinDuplicados = [...new Set(carrito)];
                     
                     if (carrito.length !== 0) {
-
+                        
                         // Mostramos divs ocultos
                         showDivs();
-
-                        
 
                         // Generamos los Nodos a partir de carrito
                         carritoSinDuplicados.forEach(function (item, indice) {
@@ -674,9 +707,15 @@
                             cartModalItemDeleteItem.innerHTML = `<i class="fas fa-trash-alt mt-2 mr-1"></i> Eliminar item`;
                             cartModalItemDeleteItem.addEventListener('click', borrarItemCarrito);
                             
-                            cartModalItemSubtotal = document.createElement('p');
+                            let cartModalItemSubtotal = document.createElement('p');
                             cartModalItemSubtotal.classList.add('mb-0');
                             cartModalItemSubtotal.innerHTML = `<span><strong>Subtotal: $ ${Intl.NumberFormat(032).format(miItem[0]['price']*numeroUnidadesItem)}</strong></span>`;
+                            
+                            let cartModalPriceList = document.createElement('li');
+                            cartModalPriceList.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'border-0', 'px-0', 'pb-0');
+                            cartModalPriceList.innerHTML = `${numeroUnidadesItem} x ${miItem[0]['brand']} ${miItem[0]['name']} <span>$ ${Intl.NumberFormat(032).format(miItem[0]['price']*numeroUnidadesItem)}</span>`;
+                            
+                            
                             
                             // Mezclamos nodos
                             $carrito.appendChild(cartModalRow);
@@ -695,8 +734,16 @@
                             cartModalItemAttributes.appendChild(cartModalItemFooter);
                             cartModalItemFooter.appendChild(cartModalItemDeleteItem);
                             cartModalItemFooter.appendChild(cartModalItemSubtotal);
+
+                            $listadoPrecios.appendChild(cartModalPriceList);
                         });
-                    
+                        
+                        // Calculamos el costo de envio
+                        shippingPrice();
+
+                        // Calculamos el total
+                        calcularTotal();
+
                     } else {
                         $carrito.innerHTML = `
                         <p> No hay productos en el carrito </p>
@@ -710,7 +757,6 @@
                 renderizarProductos();
                 renderizarItemsModals();
                 cantidadProductos();
-                
             } 
         </script>
     </head>
@@ -800,13 +846,8 @@
                                     <div id = "payment" class="card mb-3 d-none">
                                         <div class="card-body">
                                             <h5 class="mb-3">El monto total es</h5>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"> Temporary amount <span>$25.98</span></li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0"> Envio <span>Gratis</span></li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center border-bottom-0 border-right-0 border-left-0 px-0 mb-3">
-                                                    <p class="mb-0"><strong>PRECIO TOTAL </strong><small>(IVA incluido)</small></p>
-                                                    <span><strong id="total"></strong></span>
-                                                </li>
+                                            <ul id='listado-precios' class="list-group list-group-flush">
+                                               
                                             </ul>
                                             <div class="btn-group d-flex" role="group" aria-label="Basic example">
                                                 <button type="button" class="btn btn-success waves-effect waves-light">Confirmar Compra</button>
