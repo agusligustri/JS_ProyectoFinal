@@ -19,7 +19,7 @@
         <!-- Template Main CSS File -->
         <link rel="stylesheet" href="css/styles.css">
         <script>
-            window.onload = function () {
+            window.onload = function() {
                 
                 /***** BASE DE DATOS *****/
                 let baseDeDatos = [
@@ -328,6 +328,7 @@
                 function quitarUnidadCarrito() {
                     let item = this.getAttribute('marcador');
                     let itemPosition = carrito.indexOf(item);
+                    
                     if (itemPosition > -1) {
                         // Quitamos el nodo a nuesto carrito
                         carrito.splice(itemPosition, 1);
@@ -371,6 +372,7 @@
                     cantProductos = carrito.length;
                     if(cantProductos == 0) {
                         $cantProductos.classList.add('text-muted');
+                        localStorage.clear();
                     } else {
                         $cantProductos.classList.remove('text-muted');
                     }
@@ -417,7 +419,6 @@
                 function confirmarCompra(){
                     alert('¡Gracias por tu compra!')
                 };
-
                 function limpiarCarrito () {
                     $carrito.textContent = '';
                 }
@@ -437,7 +438,14 @@
                     $payment.classList.add('d-none'); 
                     $discount.classList.add('d-none'); 
                 };
-                
+                function guardarStorage() {
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+                };
+                function cargarStorage() {
+                    carrito = JSON.parse(localStorage.getItem('carrito'));
+                    carrito == null ? carrito = [] : null;
+                };
+
                 /** RENDERIZADO **/
                 // Renderizado galería de productos
                 function renderizarProductos() {
@@ -756,11 +764,16 @@
                             $listadoPrecios.appendChild(cartModalPriceList);
                         });
                         
+                        // Guardamos en localStorage
+                        guardarStorage();
+
                         // Calculamos el costo de envio
                         shippingPrice();
 
                         // Calculamos el total
                         calcularTotal();
+
+
 
                     } else {
                         $carrito.innerHTML = `
@@ -774,7 +787,8 @@
                 /***** INICIO DE APLICACION *****/
                 renderizarProductos();
                 renderizarItemsModals();
-                cantidadProductos();
+                cargarStorage();
+                renderizarCarrito();
             }
         </script>
 
