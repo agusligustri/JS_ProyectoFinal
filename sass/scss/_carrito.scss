@@ -1,0 +1,19 @@
+/** CARRITO **/
+
+/**Item Quantity Input**/
+#carrito {
+    
+    .quantity-button {
+        width: auto;
+        font-size: $font-size-carrito-input-button;
+    }
+
+    .quantity-input {
+        margin-top: 15px;
+        font-size: $font-size-carrito-input;
+        text-align: center;
+        width: 40px;
+    }
+
+}
+

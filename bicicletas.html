@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Meta -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>SCOTT STORE || Bicicletas</title>
+        <meta name="description" content="Bicicletas Scott Mountain Bike, de ruta, triatlón y para niños. Distribuidores Oficiales. Pagá en cuotas y sin moverte de tu casa. Envios a Todo el País. ¡Ingresá Ahora!">
+		<meta name="keywords" content="TIENDA SCOTT, BICICLETAS SCOTT, SCOTT, BICICLETAS, BICIS, MTB, MOUNTAINBIKE, RUTA, RUTERA, RODADO, 26, 27.5, 29, SPARK, SCALE, ASPECT, ADDICT, SPEEDSTER, CONTESSA, PRECIOS, OFERTAS, ZONA OESTE, BUENOS AIRES, ARGENTINA, CARBONO, SHIMANO, SRAM">
+        <!-- Favicon -->
+	    <link href="images/general/favicon.png" rel="icon" type="image/png" />
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" type="text/css">
+        <!-- Vendor CSS Files -->
+        <link rel="stylesheet" href="vendor/owlcarousel/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/magnificpopup/css/magnificpopup.min.css">
+        <!-- Template Main CSS File -->
+        <link rel="stylesheet" href="css/styles.css">
+        <script>
+            window.onload = function () {
+                
+                // Base de Datos
+                let baseDeDatos = [
+                {
+                    id: 10000,
+                    category: "bikes",
+                    subcategory: "mtb",
+                    brand: "Scott",
+                    name: "Scale RC 900 WC",
+                    price: 1190430,
+                    image: './images/bicicletas/mtb/scale-rc-wc-2020-300x300.jpg',
+                    imagelg: './images/bicicletas/mtb/scale-rc-wc-2020.jpg',
+                    description: 'Para aspirar al título mundial hace falta una máquina de calidad mundial. Ligera, rígida y rápida; esto es lo que te ofrece la Scale RC 900 World Cup. Repleta de componentes de calidad y con toda la magia del carbono, con la World Cup dejarás de ser el seguidor número uno de Nino Schurter para quizás pasar a disputar el maillot de líder. La bicicleta está preparada; ¿y tú? El tiempo lo dirá.',
+                    list: [
+                        'Cuadro Scale RC de carbono HMX', 
+                        'RockShox SID SL Select+RL3 100 mm', 
+                        'Control remoto RideLoc con 3 posiciones',
+                        'SRAM X01 Eagle, 12 velocidades', 
+                        'Frenos de disco SRAM Level TLM', 
+                        'Ruedas de carbono Syncros Silverton 1.0', 
+                        'Cubiertas Maxxis Rekon Race Kevlar', 
+                        'Componentes de carbono Syncros'
+                    ],
+                    stock: 3,
+                },
+                {
+                    id: 10001,
+                    category: "bikes",
+                    subcategory: "mtb",
+                    brand: "Scott",
+                    name: "Spark RC 900",
+                    price: 1109056,
+                    image: './images/bicicletas/mtb/spark-rc-300x300.jpg',
+                    imagelg: './images/bicicletas/mtb/spark-rc.jpg',
+                    description: 'Hazte con la Spark RC Team Issue AXS si quieres hacer realidad tu sueño de participar en un campeonato del mundo. El cuadro más rápido del mercado, un grupo sin cables de 12 velocidades de SRAM y componentes Syncros: es una combinación perfecta para participar en carreras los fines de semana o para intentar poner el pie en tu primera prueba de copa del mundo.',
+                    list: [
+                        'Cuadro Spark RC de carbono HMF', 
+                        'Horquilla RockShox SID Select+RL3 100 mm', 
+                        'FOX Nude EVOL, TwinLoc, 100 mm', 
+                        'SRAM X01 AXS Eagle, 12 velocidades', 
+                        'Frenos de disco Shimano XT', 
+                        'Ruedas Syncros Silverton 2.0 TR', 
+                        'Cubiertas Maxxis Rekon Race Kevlar',
+                        'Componentes de carbono Syncros'
+                    ], 
+                    stock: 2,
+                },
+                {
+                    id: 10002,
+                    category: "bikes",
+                    subcategory: "mtb",
+                    brand: "Scott",
+                    name: "Scale RC 900 Team",
+                    price: 678198,
+                    image: './images/bicicletas/mtb/scale-rc-900-team-300x300.jpg',
+                    imagelg: './images/bicicletas/mtb/scale-rc-900-team.jpg',
+                    description: 'Con la Scale RC Team de SCOTT podrás prepararte para superar tus mejores registros de velocidad en carretera. Diseñada para competir con la élite, la Scale RC Team viene con horquilla RockShox SID, transmisión SRAM Eagle y componentes Syncros en un paquete que no deja indiferente.',
+                    list: [
+                        'Cuadro Scale RC Carbon / IMP technology / HMF', 
+                        'Horquilla RockShox SID Select RL Air', 
+                        'Descarrilador Trasero SRAM X01 / Eagle 12 Speed', 
+                        'Shifters SRAM GX Eagle Trigger', 
+                        'Palancas SRAM X1 DUB Carbon Eagle GXP Boost QF 168 / 32T', 
+                        'Frenos Shimano XT M8100 Disc 180/F and 160/R SM-RT66 rotor', 
+                        'Ruedas Syncros Silverton 2.5 6 Bolt F: 15x110mm, R: 12x148mm Boost',
+                        'Cubieras WTB Ranger / 2.25″ / 60 TPI / Aramid Bead / Tubeless Ready',
+                        'Componentes de carbono Syncros'    
+                    ], 
+                    stock: 1,
+                },
+                {
+                    id: 10003,
+                    category: "bikes",
+                    subcategory: "mtb",
+                    brand: "Scott",
+                    name: "Scale 930",
+                    price: 470724,
+                    image: './images/bicicletas/mtb/scale-930-300x300.jpg',
+                    imagelg: './images/bicicletas/mtb/scale-930.jpg',
+                    description: 'La serie Scale 930 de SCOTT tiene un cuadro de fibra de carbono superligero. La combinación de suspensión FOX, transmisión SRAM Eagle y componentes Syncros produce una bicicleta de competición ligera y eficiente.',
+                    list: [
+                        'Cuadro Scale en carbono HMF',
+                        'Horquilla FOX 32 Float Rhythm 100 mm',
+                        'Control remoto RideLoc con 3 posiciones',
+                        'SRAM SX Eagle, 12 velocidades',
+                        'Frenos de disco Shimano',
+                        'Llantas Syncros X-25 TR',
+                        'Cubiertas WTB Ranger Kevlar',
+                        'Componentes Syncros'
+                    ],
+                    stock: 10, 
+                },
+                {
+                    id: 10004,
+                    category: "bikes",
+                    subcategory: "mtb",
+                    brand: "Scott",
+                    name: "Aspect 940",
+                    price: 142680,
+                    image: './images/bicicletas/mtb/aspect-940-300x300.jpg',
+                    imagelg: './images/bicicletas/mtb/aspect-940.jpg',
+                    description: 'La Aspect 940 de SCOTT es una bicicleta de montaña rígida sin suspensión trasera, diseñada para ser ligera, eficaz y con un precio razonable. La horquilla cuenta con mecanismo de bloqueo, los frenos son de disco y los componentes de Syncros. Es el modelo perfecto para principiantes o para usuarios de bicicleta de montaña que se guíen por el presupuesto.',
+                    list: [
+                        'Cuadro de aleación Aspect 700/900', 
+                        'Horquilla Suntour XCR32-RL-R 100 mm' ,  
+                        'Bloqueo remoto Suntour'    ,
+                        'Shimano Deore-Altus, 18 velocidades' ,  
+                        'Frenos Shimano',    
+                        'Kenda Booster'   
+                    ],
+                    stock: 8, 
+                },
+                {
+                    id: 10005,
+                    category: "bikes",
+                    subcategory: "mtb",
+                    brand: "Scott",
+                    name: "Aspect 950",
+                    price: 121647,
+                    image: './images/bicicletas/mtb/aspect-950-300x300.jpg',
+                    imagelg: './images/bicicletas/mtb/aspect-950.jpg',
+                    description: 'La Aspect 950 de SCOTT es una bicicleta de montaña rígida sin suspensión trasera, diseñada para ser ligera, eficaz y con un precio razonable. La horquilla cuenta con mecanismo de bloqueo, los frenos son de disco y los componentes de Syncros. Es el modelo perfecto para principiantes o para usuarios de bicicleta de montaña que se guíen por el presupuesto.',
+                    list: [
+                        'Cuadro de aleación Aspect 700/900',
+                        'Horquilla Suntour XCT30-HLO 100 mm',
+                        'Shimano Altus, 27 velocidades',
+                        'Frenos de disco hidráulicos Tektro',
+                        'Kenda Booster'
+                    ],
+                    stock: 5, 
+                },
+                {
+                    id: 10006,
+                    category: "bikes",
+                    subcategory: "mtb",
+                    brand: "Scott",
+                    name: "Aspect 960",
+                    price: 104754,
+                    image: './images/bicicletas/mtb/aspect-960-300x300.jpg',
+                    imagelg: './images/bicicletas/mtb/aspect-960.jpg',
+                    description: 'La Aspect 960 de SCOTT es una bicicleta de montaña rígida sin suspensión trasera, diseñada para ser ligera, eficaz y con un precio razonable. Los frenos son de disco y los componentes de Syncros. Es el modelo perfecto para principiantes o para usuarios de bicicleta de montaña que se guíen por el presupuesto.',
+                    list: [
+                        'Cuadro de aleación Aspect 700/900',
+                        'Horquilla Suntour XCE28 100 mm',
+                        'Shimano Tourney TX, 24 velocidades',
+                        'Frenos de disco hidráulicos Tektro',
+                        'Kenda Booster'
+                    ],
+                    stock: 4,  
+                },
+                {
+                    id: 10100,
+                    category: "bikes",
+                    subcategory: "ruta",
+                    brand: "Scott",
+                    name: "Foil RC",
+                    price: 876633,
+                    image: './images/bicicletas/ruta/foil-rc-300x300.jpg',
+                    imagelg: './images/bicicletas/ruta/foil-rc.jpg',
+                    description: 'Con victorias en etapas de todas las grandes vueltas, triunfos en clásicas como la Milán-San Remo, Lieja Bastogne-Lieja y París-Roubaix, podemos decir con total seguridad que la FOIL es la bicicleta aerodinámica más polivalente del mercado. Hemos diseñado el cuadro de fibra de carbono HMX para ayudarte a arañar esos valiosos segundos. Es uno de los cuadros más ligeros en el segmento de aerodinámicos. La SCOTT FOIL RC es una réplica de la del equipo Orica-SCOTT. Con un sistema de manillar integrado Syncros y componentes de carbono Syncros, esta bicicleta está diseñada para ayudarte a ganar todas las carreras.',
+                    list: [
+                        'Cuadro de carbono FOIL HMX',
+                        'Horquilla FOIL HMX',
+                        'Transmisión Shimano Dura-Ace, 22 velocidades',
+                        'Ruedas Zipp 30 Course'
+                    ],
+                    stock: 3, 
+                },
+                {
+                    id: 10101,
+                    category: "bikes",
+                    subcategory: "ruta",
+                    brand: "Scott",
+                    name: "Addict 10",
+                    price: 395400,
+                    image: './images/bicicletas/ruta/addict-10-19-300x300.jpg',
+                    imagelg: './images/bicicletas/ruta/addict-10.jpg',
+                    description: '¿Ligera? Por supuesto. ¿Rápida? Ni te imaginas. Ahora más integrada que nunca: la NUEVA Addict 10 pone en tus manos toda la ventaja competitiva que necesitas, ya sea para triturar todos los registros de Strava de tu zona uno a uno, para imponerte al sprint en un puerto de montaña o para llevarte la victoria en los critériums de tu zona.',
+                    list: [
+                        'Cuadro: Addict HMF Carbon',
+                        'Horquilla: Addict HMF Carbon',
+                        'Desviador trasero: Shimano Ultegra RD-R8000- GS 22 speed',
+                        'Desviador delantero: Shimano Ultegra FD-R8000',
+                        'Manetas de cambio: Shimano Ultegra ST-R8000 Carbon',
+                        'Frenos: Shimano Ultegra BR-R8000 Super SLR Dual',
+                        'Bielas: Shimano Ultegra FC-R8000',
+                        'Neumáticos: Schwalbe Durano Fold',
+                        'Rueda: Syncros RP2.0'
+                    ],
+                    stock: 2,
+                },
+                {
+                    id: 10102,
+                    category: "bikes",
+                    subcategory: "ruta",
+                    brand: "Scott",
+                    name: "Speedster 20 Disco",
+                    price: 199800,
+                    image: './images/bicicletas/ruta/speedster-20-disco-300x300.jpg',
+                    imagelg: './images/bicicletas/ruta/speedster-20-disco.jpg',
+                    description: 'Hemos renovado completamente el diseño de la SCOTT Speedster para 2020. Con un peso inferior a su predecesora, la Speedster 20 presenta un grupo Shimano y componentes Syncros. ¡Notarás cómo mejora tu velocidad al instante!',
+                    list: [
+                        'Cuadro de aleación Speedster',
+                        'Horquilla Speedster Carbon 1 1/8″-1 1/4″',
+                        'Transmisión Shimano Tiagra, 20 velocidades',
+                        'Frenos a disco Tektro',
+                        'Manillar Syncros RR2.0 Comfort 31.8mm',
+                        'Sillín Syncros FL2.5',
+                        'Llantas Syncros Race 22',
+                        'Peso Aproximado: 9.3kg'
+                    ],
+                    stock: 2, 
+                },
+                {
+                    id: 10103,
+                    category: "bikes",
+                    subcategory: "ruta",
+                    brand: "Scott",
+                    name: "Speedster 20",
+                    price: 188020,
+                    image: './images/bicicletas/ruta/speedster-20-300x300.jpg',
+                    imagelg: './images/bicicletas/ruta/speedster-20.jpg',
+                    description: 'Hemos renovado completamente el diseño de la SCOTT Speedster para 2020. Con un peso inferior a su predecesora, la Speedster 20 presenta un grupo Shimano y componentes Syncros. ¡Notarás cómo mejora tu velocidad al instante!',
+                    list: [
+                        'Cuadro de aleación Speedster',
+                        'Horquilla Speedster Carbon 1 1/8″-1 1/4″',
+                        'Transmisión Shimano Tiagra, 20 velocidades',
+                        'Frenos Tektro',
+                        'Manillar Syncros RR2.0 Comfort 31.8mm',
+                        'Sillín Syncros FL2.5',
+                        'Llantas Syncros Race 22',
+                        'Peso Aproximado: 9.3kg' 
+                    ],
+                    stock: 3, 
+                },
+                {
+                    id: 10200,
+                    category: "bikes",
+                    subcategory: "tria",
+                    brand: "Scott",
+                    name: "Plasma 10",
+                    price: 853040,
+                    image: './images/bicicletas/tria/plasma-10-300x300.jpg',
+                    imagelg: './images/bicicletas/tria/plasma-10.jpg',
+                    description: 'La Plasma 10 de SCOTT tiene un diseño muy similar al del modelo Plasma Team Issue. La Plasma 10 es una mejora creada sobre modelos anteriores que presenta un increíble nivel de ajustabilidad e integración, incluye espacio para llevar alimentos, y además a un precio asequible.',
+                    list: [
+                        'Cuadro Plasma 4 Carbon',
+                        'Shimano Ultegra, 22 velocidades',
+                        'Llantas Syncros Race 22',
+                        'Cubiertas Continental Grand Sport Race',
+                        'Componentes de carbono • aleación Profile'
+                    ],
+                    stock: 4, 
+                },
+    
+                ];
+                
+                // Variables y Selectores    
+                let carrito = [];
+                let total = 0;
+
+                let $carrito = document.querySelector('#carrito');
+                let $total = document.querySelector('#total');
+                let $gallery = document.querySelector('#gallery');
+                let $modals = document.querySelector('#products-modals');
+                let $botonVaciar = document.querySelector('#boton-vaciar');
+                let $cantProductos = document.querySelector('#cantidad-productos');
+
+                let $shipping = document.querySelector('#shipping');
+                let $weacept = document.querySelector('#weacept');
+                let $payment = document.querySelector('#payment');
+                let $discount = document.querySelector('#discount');
+                let $purchaseDelay = document.querySelector('#purchase-delay');
+                
+
+                // Listener
+                $botonVaciar.addEventListener('click', vaciarCarrito);
+                
+               
+                /***** FUNCIONES *****/
+
+                /* Funcionalidad */
+
+                function agregarCarrito () {
+                    // Anyadimos el Nodo a nuestro carrito
+                    carrito.push(this.getAttribute('marcador'))
+                    // Calculo el total
+                    calcularTotal();
+                    // Renderizamos el carrito 
+                    renderizarCarrito();
+                    // Imprimimos en consola los ID de los productos del carrito
+                    console.log(carrito);
+                }
+                                                        
+                function borrarItemCarrito() {
+                    // Obtenemos el producto ID que hay en el boton pulsado
+                    let id = this.getAttribute('marcador');
+
+                    // Borramos todos los productos
+                    carrito = carrito.filter(function (carritoId) {
+                        return carritoId !== id;
+                    });
+                    // volvemos a renderizar
+                    renderizarCarrito();
+                    
+                    // Calculamos de nuevo el precio
+                    //calcularTotal();
+                    console.log(carrito);
+                }
+                                                                              
+                function limpiarCarrito () {
+                    $carrito.textContent = '';
+                }
+    
+                function cantidadProductos() {
+                    cantProductos = carrito.length;
+                    if(cantProductos == 0) {
+                        $cantProductos.classList.add('text-muted' );
+                    } else {
+                        $cantProductos.classList.remove('text-muted');
+                    }
+                    $cantProductos.textContent = `${cantProductos}`;
+                    console.log(cantProductos);
+                };
+
+                function calcularTotal() {
+                    // Limpiamos precio anterior
+                    total = 0;
+
+                    // Recorremos el array del carrito
+                    for (let item of carrito) {
+                        // De cada elemento obtenemos su precio
+                        let miItem = baseDeDatos.filter(function(itemBaseDatos) {
+                            return itemBaseDatos['id'] == item;
+                        });
+                        total = total + miItem[0]['price'];
+                    }
+                    // Formateamos el total para que solo tenga dos decimales
+                    let totalDosDecimales = total.toFixed(2);
+                    
+                    console.log(totalDosDecimales);
+                    // Renderizamos el precio en el HTML
+                    //$total.textContent(`Total: $ ${totalDosDecimales}`);
+                }
+    
+                function vaciarCarrito() {
+                    if(confirm('¿Está seguro que desea vaciar el carrito?')) {
+                        carrito = [];
+                        console.log(carrito);
+                    }
+                
+                    // Renderizamos los cambios
+                    renderizarCarrito();
+                };
+
+                function showDivs() {
+                    $purchaseDelay.classList.remove('d-none');
+                    $shipping.classList.remove('d-none');
+                    $payment.classList.remove('d-none'); 
+                    $discount.classList.remove('d-none'); 
+                };
+                
+                function ocultDivs() {
+                    $purchaseDelay.classList.add('d-none');
+                    $shipping.classList.add('d-none'); 
+                    $payment.classList.add('d-none'); 
+                    $discount.classList.add('d-none'); 
+                };
+
+                
+                
+                
+                // FUNCIONES RENDERIZADO
+
+                // Renderizamos galería de productos
+                function renderizarProductos() {
+                    for (const datosProducto of baseDeDatos) {
+                        
+                        // Estructura
+                        const card = document.createElement('div');
+                        card.classList.add('card', datosProducto['subcategory'], 'col-lg-3', 'col-md-4', 'col-sm-6', 'col-12');
+                        
+                        // Imagen
+                        const cardImagen = document.createElement('img');
+                        cardImagen.classList.add('card-img-top');
+                        cardImagen.setAttribute('src', datosProducto['image']);
+                        
+                        // Body
+                        const cardBody = document.createElement('div');
+                        cardBody.classList.add('card-body');
+                        
+                        // Titulo
+                        const cardTitulo = document.createElement('p');
+                        cardTitulo.classList.add('card-title');
+                        cardTitulo.textContent = `${datosProducto['brand'].toUpperCase()} ${datosProducto['name']}`;
+                        
+                        // Precio
+                        const cardPrecio = document.createElement('p');
+                        cardPrecio.classList.add('card-price');
+                        
+                        var precioFormateado = Intl.NumberFormat(032).format(datosProducto['price']);
+                        cardPrecio.textContent = `$ ${precioFormateado}`;
+                        
+                        
+                        // Boton Info
+                        const cardInfoBoton = document.createElement('button');
+                        cardInfoBoton.setAttribute('type', 'button');
+                        cardInfoBoton.classList.add('btn', 'btn-secondary');
+                        cardInfoBoton.setAttribute('data-toggle', 'modal');
+                        cardInfoBoton.setAttribute('data-target', `#modal${datosProducto['id']}`);
+                        cardInfoBoton.textContent = 'Mas Informacion';
+                        
+                        // Boton Agregar al Carrito
+                        const cardAgregarBoton = document.createElement('button');
+                        cardAgregarBoton.classList.add('btn', 'btn-primary', 'mt-1');
+                        cardAgregarBoton.setAttribute('marcador', datosProducto['id']);
+                        cardAgregarBoton.textContent = 'Agregar al Carrito ';
+                        cardAgregarBoton.addEventListener('click', agregarCarrito);
+                        
+                        // Simbolo Carrito Font Awesome 
+                        const fontAwesomeCart = document.createElement('i');
+                        fontAwesomeCart.classList.add('fas', 'fa-cart-plus');
+                        
+                        // Insertamos
+                        $gallery.appendChild(card);
+                        card.appendChild(cardBody);
+                        cardBody.appendChild(cardImagen);
+                        cardBody.appendChild(cardTitulo);
+                        cardBody.appendChild(cardPrecio);
+                        cardBody.appendChild(cardInfoBoton);
+                        cardBody.appendChild(cardAgregarBoton);
+                        cardAgregarBoton.appendChild(fontAwesomeCart);
+                    };
+                };
+                
+                // Renderizamos modals de cada producto
+                function renderizarItemsModals() {
+                    for (const datosProducto of baseDeDatos) {
+                        
+                        // Estructura Modal 
+                        const itemModal = document.createElement('div');
+                        itemModal.id = `modal${datosProducto['id']}`;
+                        itemModal.classList.add('modal', 'fade');
+                        itemModal.setAttribute('tabindex', '-1');
+                        itemModal.setAttribute('role','dialog');
+                        itemModal.setAttribute('aria-labelledby','myHugeModalLabel');
+                        itemModal.setAttribute('aria-hidden', 'true');
+                        
+                        // Modal Dialog
+                        const itemModalDialog = document.createElement('div');
+                        itemModalDialog.classList.add('modal-dialog','modal-xl');
+                        
+                        // Modal Content
+                        const itemModalContent = document.createElement('div');
+                        itemModalContent.classList.add('modal-content');
+                        
+                        // Modal Container
+                        const itemModalContainer = document.createElement('div');
+                        itemModalContainer.classList.add('container');
+                        
+                        // Modal Row
+                        const itemModalRow = document.createElement('div');
+                        itemModalRow.classList.add('row');
+                        
+                        // Modal Responsive Left
+                        const itemModalResponsiveLeft = document.createElement('div');
+                        itemModalResponsiveLeft.classList.add('col-12', 'col-lg-6', 'p-4');
+                        
+                        // Modal Image
+                        const itemModalImage = document.createElement('img');
+                        itemModalImage.classList.add('w-100');
+                        itemModalImage.setAttribute('src', datosProducto['imagelg']);
+                        
+                        // Modal Responsive Right
+                        const itemModalResponsiveRight = document.createElement('div');
+                        itemModalResponsiveRight.classList.add( 'd-flex', 'flex-column', 'col-12', 'col-lg-6', 'p-4');
+                        
+                        // Modal Title
+                        const itemModalTitle = document.createElement('h3');
+                        itemModalTitle.classList.add('text-center');
+                        itemModalTitle.textContent = `${datosProducto['brand'].toUpperCase()} ${datosProducto['name']}`;
+                        
+                        // Modal Body
+                        const itemModalBody = document.createElement('div');
+                        itemModalBody.classList.add('description');
+                        
+                        // Modal Description <p>
+                            const itemModalDescription = document.createElement('p');
+                            itemModalDescription.textContent = `${datosProducto['description']}`;
+                            
+                            // Titulo Caracteristicas Principales
+                            const itemPrincipalCarTitle = document.createElement('h5');
+                            itemPrincipalCarTitle.textContent = 'Características Principales';
+                            
+                            // Lista de Caracterìsticas
+                            const itemListCar = document.createElement('ul');
+                            const itemListCarIl = document.createElement('li');
+                            
+                            // Botones
+                            
+                            const itemModalButtonsDiv = document.createElement('div');
+                            itemModalButtonsDiv.classList.add('container', 'd-flex', 'align-items-end','flex-grow-1');
+                            
+                            const itemModalButtonsContainer = document.createElement('div');
+                            itemModalButtonsContainer.classList.add('container');
+                            
+                            const itemModalButtons = document.createElement('div');
+                            itemModalButtons.classList.add('row', 'align-content-end', 'justify-content-center');
+                            
+                            // Boton Agregar al Carrito
+                            const itemModalAgregarBoton = document.createElement('button');
+                            itemModalAgregarBoton.classList.add('btn', 'btn-primary', 'm-2', 'col-12', 'col-xl-5', 'agregar-boton');
+                            itemModalAgregarBoton.setAttribute('marcador', datosProducto['id']);
+                            itemModalAgregarBoton.textContent = 'Agregar al Carrito ';
+                            itemModalAgregarBoton.addEventListener('click', agregarCarrito);
+                            
+                            // Simbolo Carrito Font Awesome 
+                            const fontAwesomeCart = document.createElement('i');
+                            fontAwesomeCart.classList.add('fas', 'fa-cart-plus');
+                            
+                            // Boton Cerrar Modal
+                            const itemModalCerrarBoton = document.createElement('button');
+                            itemModalCerrarBoton.classList.add('btn', 'btn-secondary', 'm-2', 'col-12', 'col-xl-5');
+                            itemModalCerrarBoton.setAttribute('data-dismiss', 'modal');
+                            itemModalCerrarBoton.textContent = 'Cerrar Ventana';
+                            
+                            // Renderizamos Modal
+                            $modals.appendChild(itemModal);
+                            itemModal.appendChild(itemModalDialog);
+                            itemModalDialog.appendChild(itemModalContent);
+                            itemModalContent.appendChild(itemModalContainer);
+                            itemModalContainer.appendChild(itemModalRow);
+                            itemModalRow.appendChild(itemModalResponsiveLeft);
+                            itemModalResponsiveLeft.appendChild(itemModalImage);
+                            itemModalRow.appendChild(itemModalResponsiveRight);
+                            itemModalResponsiveRight.appendChild(itemModalTitle);
+                            itemModalResponsiveRight.appendChild(itemModalBody);
+                            itemModalBody.appendChild(itemModalDescription);
+                            itemModalBody.appendChild(itemPrincipalCarTitle);
+                            itemModalBody.appendChild(itemListCar);
+                            datosProducto.list.forEach(elem =>  {
+                                let itemListCarLi = document.createElement('li');
+                                itemListCarLi.textContent = elem;
+                                itemListCar.appendChild(itemListCarLi)
+                            });
+                            itemModalResponsiveRight.appendChild(itemModalButtonsDiv);
+                            itemModalButtonsDiv.appendChild(itemModalButtonsContainer);
+                            itemModalButtonsContainer.appendChild(itemModalButtons);
+                            itemModalButtons.appendChild(itemModalAgregarBoton);
+                            itemModalAgregarBoton.appendChild(fontAwesomeCart);
+                            itemModalButtons.appendChild(itemModalCerrarBoton);
+                        }      
+                    }
+                    
+                // Renderizamos modal de Carrito
+                function renderizarCarrito() {
+
+                    // Vaciamos todo el html
+                    limpiarCarrito();
+
+                    //Cantidad de Productos
+                    cantidadProductos();
+
+                    // Quitamos los duplicados
+                    let carritoSinDuplicados = [...new Set(carrito)];
+                    
+                    if (carrito.length !== 0) {
+
+                        // Mostramos divs ocultos
+                        showDivs();
+
+                        
+
+                        // Generamos los Nodos a partir de carrito
+                        carritoSinDuplicados.forEach(function (item, indice) {
+
+                            // Obtenemos el item que necesitamos de la variable base de datos
+                            let miItem = baseDeDatos.filter(itemBaseDatos => itemBaseDatos['id'] == item);
+                            console.log(`Producto ${miItem[0]['brand']} ${miItem[0]['name']} (ID: ${miItem[0]['id']})`);
+
+                            // Cuenta el número de veces que se repite el producto
+                            let numeroUnidadesItem = carrito.reduce(((total, itemId) => itemId === item ? total += 1 : total), 0);
+                            console.log(`Cantidad: ${numeroUnidadesItem}`);
+
+                            
+                            /** Armado del HTML del Cart **/
+                            // Creamos Div Row para cada Item del carrito
+                            let cartModalRow = document.createElement('div');
+                            cartModalRow.classList.add('row', 'mb-5'); 
+                            
+                            // Imagen del Cart
+                            let cartModalImage = document.createElement('div');
+                            cartModalImage.classList.add('col-md-5', 'col-lg-3', 'col-xl-3');
+                            cartModalImage.innerHTML = `
+                                <div id = "cart-product-image" class=>
+                                    <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                                        <img class="img-fluid w-100" src= ${miItem[0]['image']} alt='${miItem[0]['brand']} ${miItem[0]['name']}'>
+                                    </div>
+                                </div>
+                            `
+                            
+                            let cartModalItemAttributes = document.createElement('div');
+                            cartModalItemAttributes.classList.add('col-md-7', 'col-lg-9', 'col-xl-9');
+
+                            let cartModalItemAttributesDiv = document.createElement('div');
+                            cartModalItemAttributesDiv.classList.add('d-flex', 'justify-content-between');
+                            
+                            let cartModalItemDescription = document.createElement('div');
+                            cartModalItemDescription.innerHTML = `
+                                    <h4>${miItem[0]['brand'].toUpperCase()}</h4>
+                                    <h5 class='mt-1 mb-0'>${miItem[0]['name']}</h5>
+                                    <p class="mt-2 mb-0 text-muted text-uppercase small">Codigo Art: ${miItem[0]['id']}</p>
+                                    <p class="mt-2 mb-0 text-muted text-uppercase small">Tipo: ${miItem[0]['subcategory']}</p>
+                            `
+                            let cartModalItemQuantity = document.createElement('div');
+                                
+                            let cartModalItemInputDiv = document.createElement('div');
+                            cartModalItemInputDiv.classList.add('def-number-input', 'number-input', 'mb-0', 'w-100', 'justify-content-center', 'align-content-start',)
+                            
+                            let cartModalItemInputDiv2 = document.createElement('div');
+                            cartModalItemInputDiv2.classList.add('d-flex');
+
+                            let cartModalItemInputDiv3 = document.createElement('div');
+
+                            let cartModalItemInputMinusButton = document.createElement('btn');
+                            cartModalItemInputMinusButton.classList.add('btn', 'btn-primary', 'mt-0', 'quantity-button');
+                            cartModalItemInputMinusButton.textContent ='-';
+                            
+                            let cartModalItemInputField = document.createElement('input');
+                            cartModalItemInputField.readOnly = true;
+                            cartModalItemInputField.type = 'number';
+                            cartModalItemInputField.classList.add('mx-1', 'mt-0', 'quantity-input');
+                            cartModalItemInputField.min = 1;
+                            cartModalItemInputField.name = 'quantity';
+                            cartModalItemInputField.value = `${numeroUnidadesItem}`;
+
+                            let cartModalItemInputPlusButton = document.createElement('btn');
+                            cartModalItemInputPlusButton.classList.add('btn', 'btn-primary', 'mt-0', 'quantity-button');
+                            cartModalItemInputPlusButton.textContent = '+';
+
+                            let cartModalItemStock = document.createElement('small');
+                            cartModalItemStock.classList.add('form-text', 'text-muted', 'text-center');
+                            cartModalItemStock.textContent = `(Stock, ${miItem[0]['stock']} unidades)`
+
+                            let cartModalItemFooter = document.createElement('div');
+                            cartModalItemFooter.classList.add('d-flex', 'mt-2', 'justify-content-between', 'align-items-center')
+
+                            let cartModalItemDeleteItem = document.createElement('a');
+                            cartModalItemDeleteItem.type = 'button';
+                            cartModalItemDeleteItem.href = '#!';
+                            cartModalItemDeleteItem.classList.add('card-link-secondary', 'small', 'text-uppercase', 'text-decoration-none', 'mr-3');
+                            cartModalItemDeleteItem.setAttribute('marcador', `${miItem[0]['id']}`);
+                            cartModalItemDeleteItem.innerHTML = `<i class="fas fa-trash-alt mt-2 mr-1"></i> Eliminar item`;
+                            cartModalItemDeleteItem.addEventListener('click', borrarItemCarrito);
+                            
+                            cartModalItemSubtotal = document.createElement('p');
+                            cartModalItemSubtotal.classList.add('mb-0');
+                            cartModalItemSubtotal.innerHTML = `<span><strong>Subtotal: $ ${Intl.NumberFormat(032).format(miItem[0]['price']*numeroUnidadesItem)}</strong></span>`;
+                            
+                            // Mezclamos nodos
+                            $carrito.appendChild(cartModalRow);
+                            cartModalRow.appendChild(cartModalImage);
+                            cartModalRow.appendChild(cartModalItemAttributes);
+                            cartModalItemAttributes.appendChild(cartModalItemAttributesDiv);
+                            cartModalItemAttributesDiv.appendChild(cartModalItemDescription);
+                            cartModalItemAttributesDiv.appendChild(cartModalItemQuantity); //OK
+                            cartModalItemQuantity.appendChild(cartModalItemInputDiv); 
+                            cartModalItemInputDiv.appendChild(cartModalItemInputDiv2); 
+                            cartModalItemInputDiv2.appendChild(cartModalItemInputMinusButton);
+                            cartModalItemInputDiv2.appendChild(cartModalItemInputField);
+                            cartModalItemInputDiv2.appendChild(cartModalItemInputPlusButton); 
+                            cartModalItemInputDiv.appendChild(cartModalItemInputDiv3);
+                            cartModalItemInputDiv3.appendChild(cartModalItemStock);
+                            cartModalItemAttributes.appendChild(cartModalItemFooter);
+                            cartModalItemFooter.appendChild(cartModalItemDeleteItem);
+                            cartModalItemFooter.appendChild(cartModalItemSubtotal);
+                        });
+                    
+                    } else {
+                        $carrito.innerHTML = `
+                        <p> No hay elementos en el carrito </p>
+                        `;
+                        
+                        ocultDivs();
+                    };
+                };
+                                                        
+                // Inicio
+                renderizarProductos();
+                renderizarItemsModals();
+                cantidadProductos();
+                
+            } 
+        </script>
+    </head>
+    <body>
+        <!-- Page Preloder -->
+        <div id="preloder">
+            <div class="loader"></div>
+        </div>
+
+        <!-- Header w/Navbar -->
+        <header class="header-area overlay">
+            <nav class="navbar bg-black navbar-expand-md navbar-dark">
+                <div class="container">
+                    <img src="./images/general/logo.png" class="navbar-logo" alt="scott_logo">
+                    <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
+                        <span class="menu-icon-bar"></span>
+                        <span class="menu-icon-bar"></span>
+                        <span class="menu-icon-bar"></span>
+                    </button>
+                    <div id="main-nav" class="collapse navbar-collapse">
+                        <ul class="navbar-nav ml-auto">
+                            <li><a href="index.html" class="nav-item nav-link">Inicio</a></li>
+                            <li><a href="bicicletas.html" class="nav-item nav-link active">Bicicletas</a></li>
+                            <li><a href="accesorios.html" class="nav-item nav-link">Accesorios</a></li>
+                            <li><a href="indumentaria.html" class="nav-item nav-link">Indumentaria</a></li>
+                            <li><a href="contacto.html" class="nav-item nav-link">Contacto</a></li>
+                            <li>
+                                <a href="" class="nav-item nav-link" data-toggle="modal" data-target="#cartModal">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span id="cantidad-productos" class="p-3 text-warning"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <!-- Cart Modal -->
+        <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom-0">
+                        <h5 class="modal-title" id="tituloCarrito">Tu Carrito</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Modal Body-->
+                    <div class="modal-body">
+                        <section>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div id = "carrito">
+                                                <p>No hay elementos en el carrito</p>
+                                            </div>
+                                            <p id="purchase-delay" class="d-none text-primary mb-0"><i class="fas fa-info-circle mr-1"></i>No demore la compra, agregar artículos a su carrito no significa reservarlos.</p>
+                                        </div>
+                                    </div>
+                                    <!-- Envio -->
+                                    <div id= "shipping" class="card mb-3 d-none">
+                                        <div class="card-body">
+                                            <h5 class="mb-4">Expected shipping delivery</h5>
+                                            <p class="mb-0"> Thu., 12.03. - Mon., 16.03.</p>
+                                        </div>
+                                    </div>
+                                    <!-- Medios de Pago  -->
+                                    <div id ="weacept" class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="mb-4">Aceptamos</h5>
+                                            <img class="mr-2" width="45px"
+                                                src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                                                alt="Visa">
+                                            <img class="mr-2" width="45px"
+                                                src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                                                alt="American Express">
+                                            <img class="mr-2" width="45px"
+                                                src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                                                alt="Mastercard">
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="col-lg-4">
+                                    <!-- Pago -->
+                                    <div id = "payment" class="card mb-3 d-none">
+                                        <div class="card-body">
+                                            <h5 class="mb-3">El monto total es</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"> Temporary amount <span>$25.98</span></li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0"> Envio <span>Gratis</span></li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center border-bottom-0 border-right-0 border-left-0 px-0 mb-3">
+                                                    <p><strong>PRECIO TOTAL </strong><small>(IVA incluido)</small></p>
+                                                    <span><strong>$53.98</strong></span>
+                                                </li>
+                                            </ul>
+                                            <div class="btn-group d-flex" role="group" aria-label="Basic example">
+                                                <button type="button" class="btn btn-success waves-effect waves-light">Confirmar Compra</button>
+                                                <button id="boton-vaciar" type="button" class="btn btn-danger waves-effect waves-light">Vaciar Carrito</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Cupón de descuento-->
+                                    <div id= "discount" class="card mb-3 d-none">
+                                        <div class="card-body">
+                                            <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                                            Agrega tu cupón de descuento (opcional)
+                                            <span><i class="fas fa-chevron-down pt-1"></i></span>
+                                            </a>
+                                            <div class="collapse" id="collapseExample1">
+                                                <div class="mt-3">
+                                                    <div class="md-form md-outline mb-0">
+                                                        <input type="text" id="discount-code1" class="form-control font-weight-light" placeholder="Ingrese el código aquí">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer border-top-0 d-flex justify-content-end">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main -->
+        <main>
+            <section id="banner_top">
+                <img src="./images/general/header_banner.jpg" alt="header_banner">
+                <h1>BICICLETAS</h1>
+            </section>
+            <section id="description">
+                <div class="container">
+                    <div class="row">
+                        <h4>ELIGE TU TIPO DE BICI</h4>
+                        <p>En SCOTT, el ciclismo es nuestra pasión y por eso nos esforzamos en desarrollar las mejores bicis del mundo.
+                            Bicicletas de montaña, bicicletas de carretera, bicicletas eléctricas, bicicletas de gravel o de cyclocross, 
+                            e incluso bicicletas urbanas y bicicletas de trekking. Tenemos todas las opciones con las que puedas soñar. 
+                            Y como nos gusta que todo el mundo quede satisfecho, tenemos modelos para hombres, mujeres, adolescentes e 
+                            incluso para niños. Escoge tu modalidad y encuentra tu bici perfecta.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!--Card Gallery -->
+            <section id="card-gallery">
+                <div class="container">
+                    <div class="gallery-menu">
+                       <ul>
+                          <li class="btn btn-outline-primary active" data-filter="*">Todas</li>
+                          <li class="btn btn-outline-primary" data-filter=".mtb">Mountain Bike</li>
+                          <li class="btn btn-outline-primary" data-filter=".ruta">Ruta</li>
+                          <li class="btn btn-outline-primary" data-filter=".tria">Triatlón</li>
+                       </ul>
+                    </div>
+                    <div id="gallery" class="gallery-item row">    
+                    </div>
+                </div>
+            </section>
+            <!--Products Modals -->
+            <section id="products-modals">
+                
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 footer-contact">
+                            <h5>Contactanos</h5>
+                            <div class="row">
+                                <div class="d-md-1">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="d-md-11">
+                                    <p>Gorriti 1078, Francisco Álvarez (CP 1746)</p>
+                                    <p>Buenos Aires, Argentina</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="d-md-1">
+                                    <i class="far fa-clock"></i>
+                                </div>
+                                <div class="d-md-11">
+                                    <p>Lunes a Viernes: 09 a 13 hs - 16 a 20hs</p>
+                                    <p>Sábados: 10 a 13hs - 16 a 20hs</p>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="d-md-1">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="d-md-11">
+                                    <a href="https://wa.me/5491130139573">+54 9 11 3013-9573</a>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="d-md-1">
+                                    <i class="far fa-envelope"></i>
+                                </div>
+                                <div class="d-md-11">
+                                    <a href="mailto:info@scottstore.com.ar">info@scottstore.com.ar</a>
+                                </div>
+                            </div>     
+                            <div class="row">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.834179747058!2d-58.869868462966124!3d-34.608354360610406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc910f31a6e62f%3A0x960e21c33c44093a!2sBicicleter%C3%ADa%20Scott%20Concept%20Store!5e0!3m2!1ses-419!2sar!4v1602542701733!5m2!1ses-419!2sar" width="100%" height="100px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            </div>
+                        </div>
+                        <div class="d-none d-lg-block col-lg-4 footer-links">
+                            <h5>Información</h5>
+                            <ul>
+                                <li><i class="fas fa-fw fa-chevron-right"></i><a href="index.html">Inicio</a></li>
+                                <li><i class="fas fa-fw fa-chevron-right"></i><a href="bicicletas.html">Bicicletas</a></li>
+                                <li><i class="fas fa-fw fa-chevron-right"></i><a href="accesorios.html">Accesorios</a></li>
+                                <li><i class="fas fa-fw fa-chevron-right"></i><a href="indumentaria.html">Indumentaria</a></li>
+                                <li><i class="fas fa-fw fa-chevron-right"></i><a href="contacto.html">Contacto</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 col-md-6 footer-newsletter">
+                            <div>
+                                <h5>Unite a Nuestro Newsletter</h5>
+                                <p>Ingresa tu dirección de mail para recibir todas nuestras novedades y promociones</p>
+                                <form action="newsletter.php" method="post" enctype="multipart/form-data">
+                                    <input type="email" name="mail-newsletter" placeholder="Email"><input type="submit" name="boton" value="Suscribite">
+                                </form>
+                            </div>
+                            <div>
+                                <h5>Medios de Pago</h5>
+                                <img src="./images/general/medios-de-pago.png" class="medios-pago" alt="Medios de Pago"> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container d-md-flex py-4">
+                <div class="mr-md-auto text-center text-md-left">
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>Scott Store</span></strong>. 
+                        <p>Todos los Derechos Reservados</p>
+                    </div>
+                    <div class="credits">
+                        Diseñado por <a href="http://www.soyagusligustri.com/">Agustín Ligustri</a>
+                    </div>
+                </div>
+                <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                    <a href="https://twitter.com/scottsports" class="twitter" target="_blank" rel="external"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/scott.sports/" class="facebook" target="_blank" rel="external"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/bikeonscott/" class="instagram" target="_blank" rel="external"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCDfnam79n2tXXumz9i7jnIA" class="YouTube" target="_blank" rel="external"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </footer>
+        <!--Fixed Whatsapp-->
+        <div id="whatsapp-button" class="d-flex flex-wrap justify-content-center align-content-center">
+            <a href="https://wa.me/5491130139573" target="_blank">
+            <i class="fab fa-lg fa-whatsapp"></i>
+        </div>
+    <!-- Vendor JS Files -->
+    <script src="vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/owlcarousel/js/owl.carousel.min.js"></script>
+    <script src="vendor/fontawesome/js/all.min.js"></script>
+    <script src="vendor/magnificpopup/js/magnificpopup.min.js"></script>
+    <script src="vendor/isotope/js/isotope.min.js"></script>
+    <!-- Template Main JS File -->
+    <script src="js/main.js"></script>
+</body>
+</html>
