@@ -21,7 +21,7 @@
         <script>
             window.onload = function () {
                 
-                // Base de Datos
+                /***** BASE DE DATOS *****/
                 let baseDeDatos = [
                 {
                     id: 10000,
@@ -277,7 +277,7 @@
     
                 ];
                 
-                // Variables y Selectores    
+                /***** VARIABLES Y SELECTORES *****/   
                 let carrito = [];
                 let total = 0;
                 let shipping = 1500;
@@ -287,38 +287,60 @@
                 let $gallery = document.querySelector('#gallery');
                 let $modals = document.querySelector('#products-modals');
                 let $botonVaciar = document.querySelector('#boton-vaciar');
+                let $botonConfirmarCompra = document.querySelector('#confirmar-compra');
                 let $cantProductos = document.querySelector('.cantidad-productos');
                 let $listadoPrecios = document.querySelector('#listado-precios');
-
+                
                 let $shipping = document.querySelector('#shipping');
                 let $weacept = document.querySelector('#weacept');
                 let $payment = document.querySelector('#payment');
                 let $discount = document.querySelector('#discount');
                 let $purchaseDelay = document.querySelector('#purchase-delay');
                 
-
-                // Listener
+                /***** LISTENERS *****/
                 $botonVaciar.addEventListener('click', vaciarCarrito);
-                
-               
+                $botonConfirmarCompra.addEventListener('click', confirmarCompra);
+
                 /***** FUNCIONES *****/
-
-                /* Funcionalidad */
-
-                function agregarCarrito () {
-                    // Anyadimos el Nodo a nuestro carrito
-                    carrito.push(this.getAttribute('marcador'))
-                    // Calculo el total
-                    calcularTotal();
-                    // Calculo del envio
-                    shippingPrice();
-
-                    // Renderizamos el carrito 
-                    renderizarCarrito();
-                    // Imprimimos en consola los ID de los productos del carrito
-                    console.log(carrito);
-                }
-                                                        
+                /** FUNCIONALIDAD **/
+                function agregarUnidadCarrito() {
+                    let item = this.getAttribute('marcador');
+                    let contador = 0;
+                    for (i = 0; i < carrito.length; i++ ) {
+                        carrito[i] == item ? contador++ : null ; 
+                    };
+                    //Antes de agregar, analizamos si hay stock del producto
+                    if (contador < this.getAttribute('stock')) {
+                        // Anyadimos el Nodo a nuestro carrito
+                        carrito.push(item)
+                        // Calculo el total
+                        calcularTotal();
+                        // Calculo del envio
+                        shippingPrice();
+                        // Renderizamos el carrito 
+                        renderizarCarrito();
+                        // Imprimimos en consola los ID de los productos del carrito
+                        console.log(carrito);
+                    } else {
+                        alert('No hay mas stock del producto');
+                    } 
+                };             
+                function quitarUnidadCarrito() {
+                    let item = this.getAttribute('marcador');
+                    let itemPosition = carrito.indexOf(item);
+                    if (itemPosition > -1) {
+                        // Quitamos el nodo a nuesto carrito
+                        carrito.splice(itemPosition, 1);
+                        // Calculo el total
+                        calcularTotal();
+                        // Calculo del envio
+                        shippingPrice();
+                        // Renderizamos el carrito 
+                        renderizarCarrito();
+                        // Imprimimos en consola los ID de los productos del carrito
+                        console.log(carrito);
+                    } 
+                };      
                 function borrarItemCarrito() {
                     
 
@@ -335,55 +357,7 @@
                     
                     // Calculamos de nuevo el precio
                     console.log(carrito);
-                }
-                                                                              
-                function limpiarCarrito () {
-                    $carrito.textContent = '';
-                }
-
-                function limpiarListadoPrecios () {
-                    $listadoPrecios.innerHTML = '';
-                }
-    
-                function cantidadProductos() {
-                    cantProductos = carrito.length;
-                    if(cantProductos == 0) {
-                        $cantProductos.classList.add('text-muted');
-                    } else {
-                        $cantProductos.classList.remove('text-muted');
-                    }
-                    $cantProductos.textContent = `${cantProductos}`;
-                    console.log(cantProductos);
-                    
-                };
-
-                function calcularTotal() {
-                    // Limpiamos precio anterior
-                    total = 0;
-
-                    // Recorremos el array del carrito
-                    for (let item of carrito) {
-                        // De cada elemento obtenemos su precio
-                        let miItem = baseDeDatos.filter(function(itemBaseDatos) {
-                            return itemBaseDatos['id'] == item;
-                        });
-                        total = total + miItem[0]['price'] + shipping;
-                    }
-                    // Le damos formato el precio
-                    let totalDosDecimales = Intl.NumberFormat(032).format(total);
-                    
-                    console.log(totalDosDecimales);
-                    
-                    // Renderizamos el precio en el HTML
-                    let totalPrice = document.createElement('li');
-                    totalPrice.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'border-bottom-0', 'border-right-0', 'border-left-0', 'px-0', 'mb-3');
-                    totalPrice.innerHTML = `
-                        <p class="mb-0"><strong>PRECIO TOTAL </strong><small>(IVA incluido)</small></p>
-                        <span><strong>$ ${Intl.NumberFormat(032).format(total)}</strong></span>`;
-            
-                    $listadoPrecios.appendChild(totalPrice);
-                };
-    
+                }                                                                              
                 function vaciarCarrito() {
                     if(confirm('¿Está seguro que desea vaciar el carrito?')) {
                         carrito = [];
@@ -393,21 +367,15 @@
                     // Renderizamos los cambios
                     renderizarCarrito();
                 };
-
-                function showDivs() {
-                    $purchaseDelay.classList.remove('d-none');
-                    $shipping.classList.remove('d-none');
-                    $payment.classList.remove('d-none'); 
-                    $discount.classList.remove('d-none'); 
+                function cantidadProductos() {
+                    cantProductos = carrito.length;
+                    if(cantProductos == 0) {
+                        $cantProductos.classList.add('text-muted');
+                    } else {
+                        $cantProductos.classList.remove('text-muted');
+                    }
+                    $cantProductos.textContent = `${cantProductos}`;
                 };
-                
-                function ocultDivs() {
-                    $purchaseDelay.classList.add('d-none');
-                    $shipping.classList.add('d-none'); 
-                    $payment.classList.add('d-none'); 
-                    $discount.classList.add('d-none'); 
-                };
-
                 function shippingPrice() {
                     // Compras mayores a $7000, envio gratis
                     if(total > 7000) {
@@ -423,10 +391,55 @@
                     $listadoPrecios.appendChild(cartModalShippingPrice);
 
                 }
-                
-                /* Renderizado */
+                function calcularTotal() {
+                    // Limpiamos precio anterior
+                    total = 0;
 
-                // Renderizamos galería de productos
+                    // Recorremos el array del carrito
+                    for (let item of carrito) {
+                        // De cada elemento obtenemos su precio
+                        let miItem = baseDeDatos.filter(function(itemBaseDatos) {
+                            return itemBaseDatos['id'] == item;
+                        });
+                        total = total + miItem[0]['price'] + shipping;
+                    }
+                    // Le damos formato el precio
+                    let totalDosDecimales = Intl.NumberFormat(032).format(total);
+                    // Renderizamos el precio en el HTML
+                    let totalPrice = document.createElement('li');
+                    totalPrice.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'border-bottom-0', 'border-right-0', 'border-left-0', 'px-0', 'mb-3');
+                    totalPrice.innerHTML = `
+                        <p class="mb-0"><strong>PRECIO TOTAL </strong><small>(IVA incluido)</small></p>
+                        <span><strong>$ ${Intl.NumberFormat(032).format(total)}</strong></span>`;
+            
+                    $listadoPrecios.appendChild(totalPrice);
+                };
+                function confirmarCompra(){
+                    alert('¡Gracias por tu compra!')
+                };
+
+                function limpiarCarrito () {
+                    $carrito.textContent = '';
+                }
+                function limpiarListadoPrecios () {
+                    $listadoPrecios.innerHTML = '';
+                }
+                function showDivs() {
+
+                    $purchaseDelay.classList.remove('d-none');
+                    $shipping.classList.remove('d-none');
+                    $payment.classList.remove('d-none'); 
+                    $discount.classList.remove('d-none'); 
+                };
+                function ocultDivs() {
+                    $purchaseDelay.classList.add('d-none');
+                    $shipping.classList.add('d-none'); 
+                    $payment.classList.add('d-none'); 
+                    $discount.classList.add('d-none'); 
+                };
+                
+                /** RENDERIZADO **/
+                // Renderizado galería de productos
                 function renderizarProductos() {
                     for (const datosProducto of baseDeDatos) {
                         
@@ -468,8 +481,9 @@
                         const cardAgregarBoton = document.createElement('button');
                         cardAgregarBoton.classList.add('btn', 'btn-primary', 'mt-1');
                         cardAgregarBoton.setAttribute('marcador', datosProducto['id']);
+                        cardAgregarBoton.setAttribute('stock', datosProducto['stock']);
                         cardAgregarBoton.textContent = 'Agregar al Carrito ';
-                        cardAgregarBoton.addEventListener('click', agregarCarrito);
+                        cardAgregarBoton.addEventListener('click', agregarUnidadCarrito);
                         
                         // Simbolo Carrito Font Awesome 
                         const fontAwesomeCart = document.createElement('i');
@@ -486,8 +500,7 @@
                         cardAgregarBoton.appendChild(fontAwesomeCart);
                     };
                 };
-                
-                // Renderizamos modals de cada producto
+                // Renderizado modals de cada producto
                 function renderizarItemsModals() {
                     for (const datosProducto of baseDeDatos) {
                         
@@ -566,7 +579,7 @@
                             itemModalAgregarBoton.classList.add('btn', 'btn-primary', 'm-2', 'col-12', 'col-xl-5', 'agregar-boton');
                             itemModalAgregarBoton.setAttribute('marcador', datosProducto['id']);
                             itemModalAgregarBoton.textContent = 'Agregar al Carrito ';
-                            itemModalAgregarBoton.addEventListener('click', agregarCarrito);
+                            itemModalAgregarBoton.addEventListener('click', agregarUnidadCarrito);
                             
                             // Simbolo Carrito Font Awesome 
                             const fontAwesomeCart = document.createElement('i');
@@ -604,9 +617,8 @@
                             itemModalAgregarBoton.appendChild(fontAwesomeCart);
                             itemModalButtons.appendChild(itemModalCerrarBoton);
                         }      
-                    }
-                    
-                // Renderizamos modal de Carrito
+                    }                  
+                // Renderizado modal de Carrito
                 function renderizarCarrito() {
 
                     // Vaciamos todo el html
@@ -679,6 +691,9 @@
                             let cartModalItemInputMinusButton = document.createElement('btn');
                             cartModalItemInputMinusButton.classList.add('btn', 'btn-primary', 'mt-0', 'quantity-button');
                             cartModalItemInputMinusButton.textContent ='-';
+                            cartModalItemInputMinusButton.setAttribute('marcador', `${miItem[0]['id']}`);
+                            cartModalItemInputMinusButton.setAttribute('stock', `${miItem[0]['stock']}`);
+                            cartModalItemInputMinusButton.addEventListener('click', quitarUnidadCarrito);
                             
                             let cartModalItemInputField = document.createElement('input');
                             cartModalItemInputField.readOnly = true;
@@ -689,9 +704,12 @@
                             cartModalItemInputField.value = `${numeroUnidadesItem}`;
 
                             let cartModalItemInputPlusButton = document.createElement('btn');
-                            cartModalItemInputPlusButton.classList.add('btn', 'btn-primary', 'mt-0', 'quantity-button');
+                            cartModalItemInputPlusButton.classList.add('btn', 'btn-primary', 'mt-0', 'quantity-button', 'agregar-unidad');
                             cartModalItemInputPlusButton.textContent = '+';
-
+                            cartModalItemInputPlusButton.setAttribute('marcador', `${miItem[0]['id']}`);
+                            cartModalItemInputPlusButton.setAttribute('stock', `${miItem[0]['stock']}`);
+                            cartModalItemInputPlusButton.addEventListener('click', agregarUnidadCarrito);
+                            
                             let cartModalItemStock = document.createElement('small');
                             cartModalItemStock.classList.add('form-text', 'text-muted', 'text-center');
                             cartModalItemStock.textContent = `(Stock, ${miItem[0]['stock']} unidades)`
@@ -753,12 +771,13 @@
                     };
                 };
                                                         
-                // Inicio
+                /***** INICIO DE APLICACION *****/
                 renderizarProductos();
                 renderizarItemsModals();
                 cantidadProductos();
-            } 
+            }
         </script>
+
     </head>
     <body>
         <!-- Page Preloder -->
@@ -850,7 +869,7 @@
                                                
                                             </ul>
                                             <div class="btn-group d-flex" role="group" aria-label="Basic example">
-                                                <button type="button" class="btn btn-success waves-effect waves-light">Confirmar Compra</button>
+                                                <button id="confirmar-compra" type="button" class="btn btn-success waves-effect waves-light">Confirmar Compra</button>
                                                 <button id="boton-vaciar" type="button" class="btn btn-danger waves-effect waves-light">Vaciar Carrito</button>
                                             </div>
                                         </div>
