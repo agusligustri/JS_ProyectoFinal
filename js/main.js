@@ -5,7 +5,6 @@
     });
 
 /* Navbar */
-
 jQuery(function($) {
     $(window).on('scroll', function() {
 		if ($(this).scrollTop() >= 200) {
