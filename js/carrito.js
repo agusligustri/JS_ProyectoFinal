@@ -54,10 +54,10 @@ function agregarUnidadCarrito() {
     if (contador < this.getAttribute('stock')) {
         // Aniadimos el Nodo a nuestro carrito
         carrito.push(item)
-        // Calculo el total
-        calcularTotal();
         // Calculo del envio
         shippingPrice();
+        // Calculo el total
+        calcularTotal();
         // Renderizamos el carrito 
         renderizarCarrito();
         // Imprimimos en consola los ID de los productos del carrito
@@ -114,11 +114,8 @@ function cantidadProductos() {
 };
 function shippingPrice() {
     // Compras mayores a $15000, envio gratis
-    if(total > 15000) {
-        shipping = 0
-    } else {
-        shipping
-    }
+    total > 15000 ? shipping = 0 : shipping = 1500;
+    
     let cartModalShippingPrice = document.createElement('li');
     cartModalShippingPrice.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'border-0', 'px-0', 'pb-0');
     cartModalShippingPrice.innerHTML = `1 x Envío a domicilio <span> $ ${Intl.NumberFormat(032).format(shipping)}</span>`;
@@ -133,10 +130,9 @@ function calcularTotal() {
         let miItem = baseDeDatos.filter(function(itemBaseDatos) {
             return itemBaseDatos['id'] == item;
         });
-        total = total + miItem[0]['price'] + shipping;
+        total = total + miItem[0]['price']
     }
-    // Le damos formato el precio
-    let totalDosDecimales = Intl.NumberFormat(032).format(total);
+    
     // Renderizamos el precio en el HTML
     let totalPrice = document.createElement('li');
     totalPrice.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center', 'border-bottom-0', 'border-right-0', 'border-left-0', 'px-0', 'mb-3');
